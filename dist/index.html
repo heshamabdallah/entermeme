@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Entermeme Share API</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: arial;
+      background: #fafafa;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .app-content {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container {
+      margin: 0 auto;
+      max-width: 600px;
+      flex-basis: 100%;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 5px;
+      border: 1px solid #f1f1f1;
+    }
+    .image-field {
+      margin-bottom: 20px;
+    }
+    #meme-image-label {
+      cursor: pointer;
+      position: relative;
+      padding: 10px 15px;
+      border-radius: 5px;
+      display: inline-block;
+      border: 1px solid #f1f1f1;
+    }
+    #meme-image-label input {
+      opacity: 0;
+      z-index: -1;
+      position: absolute;
+    }
+    .submit-btn {
+      height: 35px;
+      width: 90px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: #2084fe;
+    }
+    .submit-btn[disabled] {
+      cursor: not-allowed;
+      background: #65abff;
+    }
+    .submit-btn:hover {
+      background: #65abff;
+    }
+    #submit-spin-icon {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-content">
+    <div class="form-container">
+      <form onsubmit="onSubmitUploadForm(event)">
+        <div class="image-field">
+          <label id="meme-image-label">
+            <span>Choose image</span>
+            <input type="file" name="image" id="meme-image">
+          </label>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span class="fa fa-spin fa-spinner"></span>
+          <span>Submit</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="entermeme.js"></script>
+
+  <script type="text/javascript">
+    const entermeme = new Entermeme({
+      token: '',
+    })
+
+    const onSubmitUploadForm = (e) => {
+      e.preventDefault()
+      let image = document.getElementById('meme-image').files[0]
+      if (image) {
+        entermeme.openShareModal({
+          image
+        })
+      }
+    }
+  </script>
+
+</body>
+</html>
