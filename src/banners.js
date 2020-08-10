@@ -29,7 +29,7 @@ export const makeMoneyWithMemesBanner = (target) => {
     </a>
   `
 
-  target = document.getElementById(target)
+  target = document.querySelector(target)
   if (target) {
     target.append(container)
   }
