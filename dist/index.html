@@ -84,6 +84,8 @@
         </button>
       </form>
     </div>
+
+    <div id="entermeme-make-money-banner"></div>
   </div>
 
   <script type="text/javascript" src="entermeme.js"></script>
@@ -92,6 +94,8 @@
     const entermeme = new Entermeme({
       token: '',
     })
+
+    entermeme.makeMoneyWithMemesBanner('entermeme-make-money-banner')
 
     const onSubmitUploadForm = (e) => {
       e.preventDefault()

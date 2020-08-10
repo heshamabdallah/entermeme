@@ -5,7 +5,7 @@ const closeButtonClass = 'partners-close-modal'
 const modalBackDropClass = 'partners-modal-backdrop'
 
 const { shareMeme } = require('./api')
-const { redirectTo } = require('./utils')
+const { redirectTo, createNewContainer } = require('./utils')
 
 export const clearExistingModals = () => {
   document.body.classList.remove(bodyClass)
@@ -16,10 +16,10 @@ export const createNewModal = ({ prize }) => {
   return new Promise((resolve, reject) => {
     clearExistingModals()
 
-    let modal = document.createElement('div')
-    modal.classList.add(modalClass)
+    let { container, wrapper } = createNewContainer()
+    wrapper.classList.add(modalClass)
 
-    modal.innerHTML = `
+    wrapper.innerHTML = `
       <div class="partners-modal-dialog">
         <div class="partners-modal-content">
           <div class="partners-modal-header">
@@ -33,7 +33,7 @@ export const createNewModal = ({ prize }) => {
               <img
                 height="28"
                 class="partner-cta-logo"
-                src="https://entermeme.com/images/new-ui/logo.png"
+                src="https://entermeme.com/images/logo.png"
                 alt="Entermeme - Family Friendly Meme Marketplace" />
 
               <p class="partner-cta-description">
@@ -62,19 +62,19 @@ export const createNewModal = ({ prize }) => {
       </div>
     `
 
-    document.body.append(modal)
+    document.body.append(container)
     document.body.classList.add(bodyClass)
 
-    modal.classList.add('show')
+    wrapper.classList.add('show')
 
     let overlay = document.createElement('div')
     overlay.classList.add(modalBackDropClass)
     overlay.classList.add('show')
     document.body.append(overlay)
 
-    Array.from(modal.querySelectorAll(`.${closeButtonClass}, .${modalBackDropClass}`), (el) => {
+    Array.from(wrapper.querySelectorAll(`.${closeButtonClass}, .${modalBackDropClass}`), (el) => {
       el.addEventListener('click', () => {
-        modal.classList.add('hide')
+        wrapper.classList.add('hide')
         overlay.classList.add('hide')
         document.body.classList.remove(bodyClass)
         setTimeout(() => {
@@ -83,17 +83,17 @@ export const createNewModal = ({ prize }) => {
       })
     })
 
-    let submit = modal.querySelector('.partner-cta-btn')
+    let submit = wrapper.querySelector('.partner-cta-btn')
 
     resolve({
-      modal,
+      wrapper,
       submit,
     })
   })
 }
 
 export const openShareModal = ({ prize, token, image }) => {
-  createNewModal({ prize }).then(({ modal, submit }) => {
+  createNewModal({ prize }).then(({ wrapper, submit }) => {
     submit.addEventListener('click', () => {
       submit.classList.add('loading')
       submit.setAttribute('disabled', true)
@@ -103,6 +103,10 @@ export const openShareModal = ({ prize, token, image }) => {
         token,
       }).then(({ data }) => {
         redirectTo(data.redirectUrl)
+      }).catch(({ response }) => {
+        console.log('Error with uploading saved meme', response)
+
+        redirectTo('https://entermeme.com')
       })
     })
   })

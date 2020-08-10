@@ -32,3 +32,16 @@ export const redirectTo = (url) => {
   document.body.appendChild(form)
   form.submit()
 }
+
+/**
+ * Create new partner node element
+ *
+ */
+export const createNewContainer = () => {
+  let container = document.createElement('div')
+  let wrapper = document.createElement('div')
+  container.classList.add('partners-container')
+  container.appendChild(wrapper)
+
+  return { container, wrapper }
+}
