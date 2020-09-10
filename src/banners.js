@@ -7,9 +7,9 @@ export const makeMoneyWithMemesBanner = (target) => {
   wrapper.style.maxWidth = '450px'
 
   wrapper.innerHTML = `
-    <img src="http://entermeme.com/images/partners/making_money_from_memes.jpg" alt="We pay for memes">
+    <img src="https://api.entermeme.com/images/partners/making_money_from_memes.jpg" alt="We pay for memes">
     <div class="partner-cta-coin">
-      <img src="http://entermeme.com/images/partners/coin.png" width="56">
+      <img src="https://api.entermeme.com/images/partners/coin.png" width="56">
     </div>
     <div class="my-2"></div>
     <h4 class="partner-cta-prize-heading">
@@ -20,11 +20,11 @@ export const makeMoneyWithMemesBanner = (target) => {
       Too shy to post?
     </div>
     <p>Win prizes by voting, sharing, and commenting too!</p>
-    <a class="partner-cta-btn" href="http://entermeme.com">
+    <a class="partner-cta-btn" href="https://api.entermeme.com">
       Make Money With Memes
     </a>
     <hr>
-    <a href="http://entermeme.com">
+    <a href="https://api.entermeme.com">
       <img class="partner-cta-logo" src="https://entermeme.com/images/logo.png" height="20" alt="Entermeme - Family Friendly Meme Marketplace">
     </a>
   `

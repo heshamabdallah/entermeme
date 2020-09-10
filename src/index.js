@@ -13,7 +13,7 @@ export default function Entermeme({ token }) {
     token,
     makeMoneyWithMemesBanner,
     prizeOfToday: {
-      avatar: 'https://entermeme.com/storage/prizes/xbLTn7mYO0QeqjE5jfw0TR3yUYckI9RloMOcC70i.jpeg',
+      avatar: 'https://api.entermeme.com/storage/prizes/xbLTn7mYO0QeqjE5jfw0TR3yUYckI9RloMOcC70i.jpeg',
       title: '$5 Amazon Digital Giftcard',
     },
     openShareModal(data) {

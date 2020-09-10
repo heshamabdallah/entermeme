@@ -24,7 +24,7 @@ export const shareMeme = ({ image, token }) => {
 
 export const getPrizeOfToday = () => {
   return new Promise((resolve) => {
-    api.get('/json/prize-of-today').then(({ data }) => {
+    api.get('/prize-of-today').then(({ data }) => {
       resolve({ prize: data })
     }).catch(({ response }) => {
       console.log('Error with getting the prize of today!', response)

@@ -33,7 +33,7 @@ export const createNewModal = ({ prize }) => {
               <img
                 height="28"
                 class="partner-cta-logo"
-                src="https://entermeme.com/images/logo.png"
+                src="https://api.entermeme.com/images/logo.png"
                 alt="Entermeme - Family Friendly Meme Marketplace" />
 
               <p class="partner-cta-description">
